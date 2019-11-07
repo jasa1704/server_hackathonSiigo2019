@@ -30,7 +30,7 @@ app.get('/', (req, res, next) => {
 })
 
 // // ==========================================
-// // Obtener paciente por cedula
+// // Obtener producto por cedula
 // // ==========================================
 app.get('/:id', (req, res) => {
 
@@ -59,6 +59,37 @@ app.get('/:id', (req, res) => {
         });
     })
 });
+
+// // ==========================================
+// // Eliminar producto
+// // ==========================================
+
+app.post('/delete/:id', (req, res) => {
+    let id = req.params.id;
+
+    Producto.findByIdAndDelete(id, (err, productoBorrado) =>{
+        if (err) {
+            return res.status(500).json({
+                ok: false,
+                mensaje: 'Error borrar el producto',
+                errors: err
+            });
+        }
+
+        if (!productoBorrado) {
+            return res.status(400).json({
+                ok: false,
+                mensaje: 'No existe un producto con ese id',
+                errors: { message: 'No existe un producto con ese id' }
+            });
+        }
+
+        res.status(200).json({
+            ok: true,
+            producto: productoBorrado
+        });
+    })
+})
 
 // // ==========================================
 // // Actualizar producto
