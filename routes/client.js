@@ -47,8 +47,6 @@ app.post('/', (req, res) => {
 // ==========================================
 app.get('/', (req, res, next) => {
 
-    debugger
-
     Client.find((err, clients) => {
         if (err) {
             return res.status(500).json({
