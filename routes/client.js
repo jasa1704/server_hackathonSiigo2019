@@ -47,13 +47,11 @@ app.post('/', (req, res) => {
 // ==========================================
 app.get('/', (req, res, next) => {
 
-    debugger
-
     Client.find((err, clients) => {
         if (err) {
             return res.status(500).json({
                 ok: false,
-                mensaje: 'Al cargar los clientes',
+                mensaje: 'Error al cargar los clientes',
                 errors: err
             });
         }
@@ -147,7 +145,7 @@ app.post('/:id', (req, res) => {
 // ============================================
 //   Borrar un cliente por el id
 // ============================================
-app.delete('/:id', (req, res) => {
+app.post('/delete/:id', (req, res) => {
 
     let id = req.params.id;
 
