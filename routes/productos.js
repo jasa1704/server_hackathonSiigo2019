@@ -144,9 +144,9 @@ app.post('/', (req, res) => {
     let body = req.body;
 
     let producto = new Producto({
-        tenant_id: '1234',
         nombre: body.nombre,
-        precio: body.precio
+        precio: body.precio,
+        tenant_id: body.tenant_id
     })
 
     producto.save((err, productoGuardado) => {
