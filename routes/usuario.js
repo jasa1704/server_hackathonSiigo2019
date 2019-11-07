@@ -143,6 +143,8 @@ app.post('/:id', [mdAutenticacion.verificaToken, mdAutenticacion.verificaADMIN_o
     let id = req.params.id;
     let body = req.body;
 
+    debugger
+
     Usuario.findById(id, (err, usuario) => {
 
 
