@@ -149,7 +149,7 @@ app.post('/:id', (req, res) => {
 // ============================================
 app.delete('/:id', (req, res) => {
 
-    var id = req.params.id;
+    let id = req.params.id;
 
     Client.findByIdAndRemove(id, (err, clienteBorrado) => {
 
