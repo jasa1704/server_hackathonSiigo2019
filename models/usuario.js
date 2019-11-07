@@ -3,7 +3,7 @@ var uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 
 var rolesValidos = {
-    values: ['admin', 'therapist'],
+    values: ['admin', 'client'],
     message: '{VALUE} no es un rol permitido'
 };
 
@@ -16,14 +16,6 @@ var usuarioSchema = new Schema({
     celular: { 
         type: String, 
         required: [true, 'El celular es necesario'] 
-    },
-    profesion: { 
-        type: String, 
-        required: [true, 'La profesión es necesario'] 
-    },
-    registroProfesional: { 
-        type: String, 
-        required: [true, 'El registro profesional es necesario'] 
     },
     email: { 
         type: String, unique: true, 
@@ -39,7 +31,7 @@ var usuarioSchema = new Schema({
     },
     role: { 
         type: String, 
-        required: true, default: 'therapist', 
+        required: true, default: 'client', 
         enum: rolesValidos 
     }
     

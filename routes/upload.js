@@ -4,7 +4,6 @@ var fs = require('fs');
 var app = express();
 
 var Usuario = require('../models/usuario');
-var Patient = require('../models/patient');
 
 // default options
 app.use(fileUpload());
@@ -15,7 +14,7 @@ app.post('/:tipo/:id', (req, res, next) => {
     var id = req.params.id;
 
     // tipos de colección
-    var tiposValidos = ['admin', 'therapist', 'patient'];
+    var tiposValidos = ['admin', 'client'];
 
     if (tiposValidos.indexOf(tipo) < 0) {
         return res.status(400).json({
@@ -74,7 +73,7 @@ app.post('/:tipo/:id', (req, res, next) => {
 
 function subirPorTipo(tipo, id, nombreArchivo, res) {
 
-    if (tipo === 'therapist') {
+    if (tipo === 'client') {
 
         Usuario.findById(id, (err, usuario) => {
 
@@ -94,7 +93,7 @@ function subirPorTipo(tipo, id, nombreArchivo, res) {
                 });
             }
 
-            var pathViejo = './uploads/therapist/' + usuario.img;
+            var pathViejo = './uploads/client/' + usuario.img;
 
             // Si existe, elimina la imagen anterior
             if (fs.existsSync(pathViejo)) {
@@ -116,53 +115,6 @@ function subirPorTipo(tipo, id, nombreArchivo, res) {
                 usuarioActualizado.password = ':)';
 
                 return res.status(200).json(usuarioActualizado);
-
-            });
-
-        });
-
-    }
-
-    if (tipo === 'patient') {
- 
-        Patient.findById(id, (err, patient) => {
-
-            if (err) {
-                return res.status(500).json({
-                    ok: false,
-                    mensaje: 'Error al buscar el Paciente',
-                    errors: err
-                });
-            }
-
-            if (!patient) {
-                return res.status(400).json({
-                    ok: true,
-                    mensaje: 'Paciente no existe',
-                    errors: { message: 'Paciente no existe' }
-                });
-            }
-
-            var pathViejo = './uploads/patient/' + patient.img;
-
-            // Si existe, elimina la imagen anterior
-            if (fs.existsSync(pathViejo)) {
-                fs.unlinkSync(pathViejo);
-            }
-
-            patient.img = nombreArchivo;
-
-            patient.save((err, patientActualizado) => {
-
-                if (err) {
-                    return res.status(500).json({
-                        ok: false,
-                        mensaje: 'Error al subir la imagen',
-                        errors: err
-                    });
-                }
-
-                return res.status(200).json(patientActualizado);
 
             });
 

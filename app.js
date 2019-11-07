@@ -20,14 +20,12 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 10
 // Importar rutas
 const appRoutes = require('./routes/app');
 const usuarioRoutes = require('./routes/usuario');
-const patientRoutes = require('./routes/patient');
 const loginRoutes = require('./routes/login');
 const uploadRoutes = require('./routes/upload');
 const imagenesRoutes = require('./routes/imagenes');
 
 // Rutas
 app.use('/usuario', usuarioRoutes);
-app.use('/patient', patientRoutes);
 app.use('/login', loginRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/img', imagenesRoutes);

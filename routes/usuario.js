@@ -51,19 +51,19 @@ app.get('/', (req, res, next) => {
 // ==========================================
 app.post('/', (req, res) => {
 
+    debugger
+
     let body = req.body;
 
     let usuario = new Usuario({
         nombre: body.nombre,
         celular: body.celular,
-        profesion: body.profesion,
-        registroProfesional: body.registroProfesional,
         email: body.email,
         password: bcrypt.hashSync(body.password, 10),
         img: body.img,
         role: body.role
     });
-
+    debugger
     usuario.save((err, usuarioGuardado) => {
 
         if (err) {

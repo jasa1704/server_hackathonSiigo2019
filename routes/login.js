@@ -76,7 +76,7 @@ app.post('/', (req, res) => {
 
 function obtenerMenu(ROLE) {
     
-    if (ROLE === 'therapist') {
+    if (ROLE === 'client') {
 
         var menu = [{
             titulo: 'Clientes',
