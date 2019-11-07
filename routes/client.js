@@ -145,7 +145,7 @@ app.post('/:id', (req, res) => {
 // ============================================
 //   Borrar un cliente por el id
 // ============================================
-app.delete('/:id', (req, res) => {
+app.post('/delete/:id', (req, res) => {
 
     let id = req.params.id;
 
