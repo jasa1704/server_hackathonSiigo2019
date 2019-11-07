@@ -24,6 +24,8 @@ const loginRoutes = require('./routes/login');
 const uploadRoutes = require('./routes/upload');
 const imagenesRoutes = require('./routes/imagenes');
 const productosRoutes = require('./routes/productos');
+const itemsRoutes = require('./routes/item');
+const billsRoutes = require('./routes/bill');
 const clientRoutes = require('./routes/client');
 
 // Rutas
@@ -33,6 +35,8 @@ app.use('/upload', uploadRoutes);
 app.use('/img', imagenesRoutes);
 app.use('/productos', productosRoutes);
 app.use('/clientes', clientRoutes);
+app.use('/items', itemsRoutes);
+app.use('/bills', billsRoutes);
 app.use('/', appRoutes);
 
 //  ======= Inicio Servidor -- Excuchar Peticiones=======

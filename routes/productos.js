@@ -1,10 +1,5 @@
 let express = require('express');
-let bcrypt = require('bcryptjs');
-let jwt = require('jsonwebtoken');
-
-
 let app = express();
-
 let Producto = require('../models/producto');
 
 // ==========================================
@@ -159,7 +154,7 @@ app.post('/', (req, res) => {
         }
         res.status(201).json({
             ok: true,
-            paciente: productoGuardado,
+            producto: productoGuardado,
         });
     })
 })
