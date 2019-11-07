@@ -51,7 +51,7 @@ app.get('/', (req, res, next) => {
         if (err) {
             return res.status(500).json({
                 ok: false,
-                mensaje: 'Al cargar los clientes',
+                mensaje: 'Error al cargar los clientes',
                 errors: err
             });
         }
