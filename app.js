@@ -23,12 +23,14 @@ const usuarioRoutes = require('./routes/usuario');
 const loginRoutes = require('./routes/login');
 const uploadRoutes = require('./routes/upload');
 const imagenesRoutes = require('./routes/imagenes');
+const productosRoutes = require('./routes/productos');
 
 // Rutas
 app.use('/usuario', usuarioRoutes);
 app.use('/login', loginRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/img', imagenesRoutes);
+app.use('/productos', productosRoutes);
 app.use('/', appRoutes);
 
 //  ======= Inicio Servidor -- Excuchar Peticiones=======
