@@ -4,25 +4,41 @@ var Schema = mongoose.Schema;
 
 var clientSchema = new Schema({
 
-    nombre: { 
+    identification_type: { 
         type: String, 
-        required: [true, 'El nombre es necesario'] 
+        required: [true, 'El tipo de documento es obligatorio'] 
     },
-    celular: { 
+    identification_number: { 
+        type: Number, 
+        required: [true, 'El numero es obligatorio'] 
+    },
+    first_name: { 
+        type: String,
+        required: [true, 'El primer nombre es obligatorio'] 
+    },
+    second_name: { 
         type: String, 
-        required: [true, 'El celular es necesario'] 
+        required: false
     },
-    email: { 
-        type: String, unique: true, 
-        required: [true, 'El correo es necesario'] 
-    },
-    password: { 
+    surname: { 
         type: String, 
-        required: [true, 'La contraseña es necesaria'] 
+        required: [true, 'El primer apellido es obligatorio']  
     },
-    img: { 
+    second_surname: { 
+        type: String, 
+        required: false
+    },
+    phone: { 
         type: String, 
         required: false 
+    },
+    email: { 
+        type: String,  
+        required: [true, 'El correo es obligatorio'] 
+    },
+    tenant_id: { 
+        type: String, 
+        required: [true, 'El tenant_id es obligatorio'] 
     }
     
 });
